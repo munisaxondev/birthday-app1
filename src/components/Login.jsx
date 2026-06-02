@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import FloatingBg from './FloatingBg'
 
-// The real passcode lives in .env.local (git-ignored), never in the repo.
-const SECRET = String(import.meta.env.VITE_PASSWORD ?? '')
+// Passcode: uses VITE_PASSWORD if set (e.g. local .env.local), otherwise
+// falls back to '2008' so the deployed site (Vercel) works without extra config.
+const SECRET = String(import.meta.env.VITE_PASSWORD || '2008')
 
 export default function Login({ onUnlock }) {
   const [entry, setEntry] = useState('')
