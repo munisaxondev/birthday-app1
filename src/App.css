@@ -1,0 +1,628 @@
+/* ============================================================
+   Birthday app for Malika — mobile-first "phone" layout.
+   Palette: red, pink, white.
+   ============================================================ */
+
+.phone {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
+}
+
+.page-transition {
+  height: 100%;
+  animation: pageIn 0.6s ease both;
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  overflow: hidden;
+}
+
+/* ---------- Floating decorative background ---------- */
+.floating-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating-item {
+  position: absolute;
+  bottom: -40px;
+  opacity: 0;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-115vh) rotate(220deg);
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   1. LOGIN
+   ============================================================ */
+.login-page {
+  background: linear-gradient(160deg, #ffe3ec 0%, #ffb3c6 50%, #ff7aa2 100%);
+}
+
+.login-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+}
+
+.login-eyebrow {
+  color: #b3274d;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.login-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 52px;
+  color: #d6164b;
+  line-height: 1;
+  margin: 4px 0 6px;
+  text-shadow: 0 3px 10px rgba(214, 22, 75, 0.25);
+}
+
+.login-sub {
+  color: #7a2840;
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 34px;
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #d6164b;
+  background: transparent;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.dot.filled {
+  background: #d6164b;
+  transform: scale(1.2);
+}
+
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.key {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  color: #d6164b;
+  font-size: 24px;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 12px rgba(214, 22, 75, 0.18);
+  transition: transform 0.12s, background 0.2s;
+}
+
+.key:active {
+  transform: scale(0.9);
+  background: #fff;
+}
+
+.key-empty {
+  background: transparent;
+  box-shadow: none;
+}
+
+.key-del {
+  background: transparent;
+  box-shadow: none;
+  font-size: 22px;
+}
+
+.login-hint {
+  margin-top: 28px;
+  color: #8a3151;
+  font-size: 12.5px;
+  font-style: italic;
+}
+
+/* ============================================================
+   2. CONGRATS
+   ============================================================ */
+.congrats-page {
+  background: linear-gradient(160deg, #fff0f4 0%, #ffc2d4 55%, #ff5c86 100%);
+}
+
+.congrats-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 360px;
+}
+
+.cake-emoji {
+  font-size: 64px;
+  animation: bob 2.4s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.congrats-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 46px;
+  color: #d6164b;
+  line-height: 1.05;
+  margin: 8px 0 18px;
+  text-shadow: 0 3px 12px rgba(214, 22, 75, 0.25);
+}
+
+.congrats-msg {
+  color: #6e2237;
+  font-size: 17px;
+  line-height: 1.55;
+  margin-bottom: 26px;
+}
+
+.flower-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  font-size: 34px;
+  margin-bottom: 30px;
+}
+
+.flower {
+  display: inline-block;
+  transform-origin: bottom center;
+  animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-10deg) translateY(0); }
+  50% { transform: rotate(10deg) translateY(-6px); }
+}
+
+.next-btn,
+.blow-btn {
+  background: #fff;
+  color: #d6164b;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 13px 30px;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(214, 22, 75, 0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.next-btn:active,
+.blow-btn:active {
+  transform: scale(0.95);
+}
+
+.blow-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.birth-date {
+  position: absolute;
+  bottom: 22px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 3px;
+  font-size: 18px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================
+   3. GIFT
+   ============================================================ */
+.gift-page {
+  background: linear-gradient(160deg, #ffe3ec 0%, #ff9bb6 55%, #e21f4e 100%);
+}
+
+.gift-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.gift-heading {
+  font-family: 'Dancing Script', cursive;
+  font-size: 40px;
+  color: #fff;
+  margin-bottom: 40px;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+}
+
+.gift-box {
+  position: relative;
+  width: 170px;
+  height: 150px;
+  margin: 0 auto 30px;
+  display: block;
+  animation: giftWiggle 1.6s ease-in-out infinite;
+}
+
+@keyframes giftWiggle {
+  0%, 100% { transform: rotate(-2deg) scale(1); }
+  50% { transform: rotate(2deg) scale(1.03); }
+}
+
+.gift-body {
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  width: 140px;
+  height: 105px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ff5c86, #d6164b);
+  box-shadow: 0 10px 24px rgba(214, 22, 75, 0.45);
+}
+
+.gift-lid {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  width: 170px;
+  height: 42px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ff7aa2, #e21f4e);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.6s ease, opacity 0.6s;
+  z-index: 2;
+}
+
+.gift-ribbon-v {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 105px;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+.gift-bow {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+  z-index: 3;
+  transition: transform 0.6s ease, opacity 0.6s;
+}
+
+.gift-sparkles {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 22px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+/* Opening state: lid + bow fly off, sparkles burst. */
+.gift-box.opening {
+  animation: none;
+}
+.gift-box.opening .gift-lid {
+  transform: translateY(-90px) rotate(-18deg);
+  opacity: 0;
+}
+.gift-box.opening .gift-bow {
+  transform: translate(-50%, -120px) rotate(25deg);
+  opacity: 0;
+}
+.gift-box.opening .gift-sparkles {
+  opacity: 1;
+  animation: sparkleBurst 1.2s ease-out;
+}
+
+@keyframes sparkleBurst {
+  0% { transform: translateX(-50%) scale(0.4); }
+  60% { transform: translateX(-50%) scale(1.4); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+.gift-text {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================
+   4. CAKE
+   ============================================================ */
+.cake-page {
+  background: linear-gradient(160deg, #fff0f4 0%, #ffb3c6 55%, #ff5c86 100%);
+}
+
+.cake-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.cake-heading {
+  font-family: 'Dancing Script', cursive;
+  font-size: 40px;
+  color: #d6164b;
+  margin-bottom: 30px;
+  text-shadow: 0 3px 12px rgba(214, 22, 75, 0.2);
+}
+
+.cake-scene {
+  position: relative;
+  width: 220px;
+  height: 210px;
+  margin: 0 auto 26px;
+}
+
+/* Layers build up bottom→top with staggered pop-in. */
+.cake-layer,
+.cake-plate {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  border-radius: 10px;
+  transform-origin: bottom center;
+  animation: buildPop 0.5s ease forwards;
+}
+
+.cake-plate {
+  bottom: 0;
+  width: 220px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  animation-delay: 0.1s;
+}
+
+.layer-bottom {
+  bottom: 14px;
+  width: 180px;
+  height: 60px;
+  background: linear-gradient(180deg, #ff8fab, #ff5c86);
+  animation-delay: 0.4s;
+}
+
+.layer-mid {
+  bottom: 70px;
+  width: 140px;
+  height: 52px;
+  background: linear-gradient(180deg, #fff0f4, #ffc2d4);
+  animation-delay: 0.7s;
+}
+
+.layer-top {
+  bottom: 118px;
+  width: 100px;
+  height: 46px;
+  background: linear-gradient(180deg, #ff8fab, #ff5c86);
+  animation-delay: 1s;
+}
+
+@keyframes buildPop {
+  0% { transform: translateX(-50%) scale(0); }
+  70% { transform: translateX(-50%) scale(1.08); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+.candle {
+  position: absolute;
+  bottom: 160px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 40px;
+  z-index: 4;
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
+  animation-delay: 1.3s;
+}
+
+.wick {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 36px;
+  border-radius: 4px;
+  background: repeating-linear-gradient(45deg, #fff 0 6px, #ff7aa2 6px 12px);
+}
+
+.flame {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 24px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: radial-gradient(circle at 50% 70%, #fff6b0, #ffae00 55%, #ff5e00);
+  box-shadow: 0 0 18px 6px rgba(255, 174, 0, 0.7);
+  transform-origin: bottom center;
+  animation: flicker 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1) rotate(-3deg); }
+  100% { transform: translateX(-50%) scale(1.12) rotate(3deg); }
+}
+
+.smoke {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(180, 180, 180, 0.6);
+  opacity: 0;
+}
+
+/* Blown-out: flame disappears, a wisp of smoke rises. */
+.cake-scene.blown .flame {
+  opacity: 0;
+  transform: translateX(-50%) scale(0);
+  box-shadow: none;
+  transition: all 0.4s ease;
+}
+
+.cake-scene.blown .smoke {
+  animation: smokeRise 2s ease-out forwards;
+}
+
+@keyframes smokeRise {
+  0% { opacity: 0.7; transform: translate(-50%, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -60px) scale(2.4); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.cake-text {
+  color: #6e2237;
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+
+/* ============================================================
+   5. LETTER
+   ============================================================ */
+.letter-page {
+  background: linear-gradient(160deg, #fff0f4 0%, #ffc2d4 60%, #ff7aa2 100%);
+  justify-content: flex-start;
+  padding-top: 24px;
+}
+
+.letter-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 380px;
+}
+
+.flower-row.top,
+.flower-row.bottom {
+  font-size: 30px;
+  margin: 6px 0 14px;
+}
+
+.letter-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 22px;
+  padding: 26px 22px;
+  box-shadow: 0 12px 36px rgba(214, 22, 75, 0.25);
+  animation: cardRise 0.8s ease both;
+}
+
+@keyframes cardRise {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.letter-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 36px;
+  color: #d6164b;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.letter-card p {
+  color: #4f2233;
+  font-size: 14.5px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.letter-sign {
+  text-align: center;
+  font-family: 'Dancing Script', cursive;
+  font-size: 24px;
+  color: #d6164b;
+  margin-top: 6px;
+}
+
+/* On wider screens keep it phone-shaped & scrollable. */
+@media (min-width: 500px) {
+  .phone {
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+}
